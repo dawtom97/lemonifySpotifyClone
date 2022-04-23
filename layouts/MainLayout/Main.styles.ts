@@ -3,11 +3,11 @@ import { StyledAsideTypes } from "./Main.types";
 
 
 export const StyledWrapper = styled.div`
+  transition: 0.5s;
   background-color: ${props => props.theme.body};
 `
 export const StyledInnerWrapper = styled.div`
-  width:85%;
-  margin:0 auto;
+ 
 `
 export const StyledAppShadowOverlay = styled.div<StyledAsideTypes>`
   position: fixed;

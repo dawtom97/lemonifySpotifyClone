@@ -1,7 +1,9 @@
-import { StyledInfo, StyledModal } from "./UserModal.styles";
+import { signOut } from "next-auth/react";
+import { HiLogin } from "react-icons/hi";
+import { StyledInfo, StyledLogout, StyledModal } from "./UserModal.styles";
 
 export const UserModalComponent = ({ session,isUserModalVisible }: any) => {
-  console.log(session);
+ // console.log(session);
   return (
     <StyledModal isUserModalVisible={isUserModalVisible}>
       <div>
@@ -10,6 +12,11 @@ export const UserModalComponent = ({ session,isUserModalVisible }: any) => {
       <StyledInfo>
         <p>{session?.user.email}</p>
         <p>{session?.user.name}</p>
+
+        <StyledLogout onClick={() => signOut()}>
+            <HiLogin />
+            <span>Logout</span>
+          </StyledLogout>
        
       </StyledInfo>
     </StyledModal>

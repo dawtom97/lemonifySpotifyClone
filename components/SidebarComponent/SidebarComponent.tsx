@@ -22,11 +22,14 @@ import { signOut, useSession } from "next-auth/react";
 import { SidebarTypes } from "./Sidebar.types";
 import { useSpotify } from "../../hooks/useSpotify";
 import { PlaylistInterface } from "../../interfaces/PlaylistInterface";
+import {useRecoilState} from 'recoil';
+import { playlistIdState } from "../../recoilAtoms/playlistAtom";
 
 export const SidebarComponent = ({ onClick, isMenuVisible }: SidebarTypes) => {
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
   const [playlists, setPlaylists] = useState([]);
+  const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
@@ -36,11 +39,9 @@ export const SidebarComponent = ({ onClick, isMenuVisible }: SidebarTypes) => {
     }
   }, [session, spotifyApi]);
 
-  console.log(playlists);
+ /// console.log(playlistId);
 
   return (
-    <>
-      {/* <StyledAppShadowOverlay showMenu={isMenuVisible} onClick={() => setIsMenuVisible(!isMenuVisible)}  /> */}
       <StyledAside showMenu={isMenuVisible}>
         <StyledMenuBtn onClick={onClick}>
           <HiMenuAlt1 />
@@ -75,12 +76,13 @@ export const SidebarComponent = ({ onClick, isMenuVisible }: SidebarTypes) => {
 
           {/* {Playlists.............} */}
           {playlists.map(({ id, name }: PlaylistInterface) => (
-            <LinkComponent key={id} href="/" title={name}>
+            <LinkComponent onClick={()=>setPlaylistId(id)} title={name} key={id} href={`/playlist/${id}`}>   
               <HiOutlineBookOpen />
+          
             </LinkComponent>
           ))}
         </StyledMenuWrapper>
       </StyledAside>
-    </>
+
   );
 };

@@ -5,6 +5,7 @@ import { lightTheme, darkTheme, GlobalStyles } from "../themes/themes";
 import { createContext, useState } from "react";
 import { ThemeEnums } from "../enums/ThemeEnums";
 import { SessionProvider } from "next-auth/react";
+import { RecoilRoot } from "recoil";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const [theme, setTheme] = useState(ThemeEnums.light);
@@ -23,7 +24,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       >
         <GlobalStyles />
 
-        <Component toggler={themeToggler} {...pageProps} />
+        <RecoilRoot>
+          <Component toggler={themeToggler} {...pageProps} />
+        </RecoilRoot>
 
         <button onClick={themeToggler}>Zmień</button>
       </ThemeProvider>

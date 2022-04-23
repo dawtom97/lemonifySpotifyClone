@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 
 export const StyledHeader = styled.header`
+  transition: 0.5s;
   background-color: ${props => props.theme.body};
   border-bottom: 1px solid ${props => props.theme.lightGray};
 `
@@ -16,7 +17,12 @@ export const StyledInnerWrapper = styled.div`
    & > div {
      display: flex;
      align-items: center;
-     gap:15px
+     gap:15px;
+
+     &>svg {
+      color:${props => props.theme.primary};
+      font-size: 1.3rem;
+     }
    }
 `
 
@@ -32,6 +38,9 @@ export const StyledUserButton = styled.div`
 
   :hover {
     box-shadow: 0px 4px 5px 1px ${props => props.theme.mainShadow};
+  }
+  svg {
+    color:${props => props.theme.fontColor};
   }
 
   img {
