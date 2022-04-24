@@ -9,7 +9,7 @@ import { SwiperButtonsComponent } from "../SwiperButtonsComponent/SwiperButtonsC
 
 export const BannerComponent = ({ releases }: any) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  console.log(releases);
+//  console.log(releases);
   return (
     <StyledBanner>
       <Swiper

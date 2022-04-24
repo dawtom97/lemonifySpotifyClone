@@ -11,6 +11,7 @@ export const lightTheme = {
     fontColor: '#2b2b2b',
     mainShadow: '#dddddd',
     bodyHover: '#cccccc',
+    bodyAlt: '#F2F2F2',
     ...colors
 }
 export const darkTheme= {
@@ -18,6 +19,7 @@ export const darkTheme= {
     fontColor: '#e2e2e2',
     mainShadow:'#1b1b1b',
     bodyHover: '#141414',
+    bodyAlt: '#242424',
     ...colors
 }
 
