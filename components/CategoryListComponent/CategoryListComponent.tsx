@@ -2,7 +2,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from 'swiper';
 import React, { useState } from "react";
-import { SwiperButtonsComponent } from "../SwiperButtonsComponent/SwiperButtonsComponent";
 import { StyledCategory, StyledWrapper } from "./CategoryList.styles";
 import { CategoryInterface } from "../../interfaces/CategoryInterface";
 import Link from "next/link";

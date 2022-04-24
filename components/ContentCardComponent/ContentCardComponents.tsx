@@ -12,33 +12,49 @@ export const ContentCardComponent = ({ item }: any) => {
       <StyledWrapper>
         <StyledImg>
           {item.images ? (
-            <img src={item.images[0].url} alt="" />
+            <img
+              src={item.track ? item.track.images[0] : item.images[0].url}
+              alt=""
+            />
           ) : (
-            <img src={item.album.images[0].url} alt="" />
+            <img
+              src={
+                item.track
+                  ? item.track.album.images[0].url
+                  : item.album.images[0].url
+              }
+              alt=""
+            />
           )}
         </StyledImg>
-        {item.genres && (
-                  item.genres.length < 3 ? (
-          <TextComponent size="0.7rem" weight={700}>
-            <HiBookmark /> ({item.genres.length}) {item.genres.join(", ")}
-          </TextComponent>
-        ) : (
-          <TextComponent size="0.7rem" weight={700}>
-            <HiBookmark /> ({item.genres.length}){" "}
-            {item.genres.slice(0, 3).join(", ")} ...
-          </TextComponent>
-         
-        ))}
-        {item.artists && (
+        {item.genres &&
+          (item.genres.length < 3 ? (
             <TextComponent size="0.7rem" weight={700}>
-               <HiShieldCheck /> {item.artists.map((artist:any)=> [artist.name]).join(", ")}
-             </TextComponent>
-        )}
+              <HiBookmark /> ({item.genres.length}) {item.genres.join(", ")}
+            </TextComponent>
+          ) : (
+            <TextComponent size="0.7rem" weight={700}>
+              <HiBookmark /> ({item.genres.length}){" "}
+              {item.genres.slice(0, 3).join(", ")} ...
+            </TextComponent>
+          ))}
 
+        {item.artists && (
+          <TextComponent size="0.7rem" weight={700}>
+            <HiShieldCheck />{" "}
+            {item.artists.map((artist: any) => [artist.name]).join(", ").slice(0,40)}
+          </TextComponent>
+        )}
+        {item.track && (
+          <TextComponent size="0.7rem" weight={700}>
+            <HiShieldCheck />{" "}
+            {item.track.artists.length > 2 ? item.track.artists.map((artist: any) => [artist.name]).join(", ").slice(0,40)+"...": item.track.artists.map((artist: any) => [artist.name]).join(", ") }
+          </TextComponent>
+        )}
 
         <div>
           <TextComponent size="1.1rem" weight={400}>
-            {item.name}
+            {item.track ? item.track.name : item.name}
           </TextComponent>
           {item.followers && (
             <TextComponent size="0.7rem" weight={700}>
@@ -47,7 +63,18 @@ export const ContentCardComponent = ({ item }: any) => {
           )}
           {item.duration_ms && (
             <TextComponent size="0.7rem" weight={700}>
-              <span><HiOutlineClock/></span> {formatTime(item.duration_ms)}
+              <span>
+                <HiOutlineClock />
+              </span>{" "}
+              {formatTime(item.duration_ms)}
+            </TextComponent>
+          )}
+          {item.track && (
+            <TextComponent size="0.7rem" weight={700}>
+              <span>
+                <HiOutlineClock />
+              </span>{" "}
+              {formatTime(item.track.duration_ms)}
             </TextComponent>
           )}
         </div>
