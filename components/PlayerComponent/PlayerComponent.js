@@ -51,17 +51,6 @@ export const PlayerComponent = () => {
   useEffect(() => setPlay(true),[song])
   console.log(song);
 
-  interface Locale {
-      devices?: string; // 'Devices'
-      next?: string; // 'Next'
-      pause?: string; // 'Pause'
-      play?: string; // 'Play'
-      previous?: string; // 'Previous'
-      title?: string; // '{name} on SPOTIFY'
-      volume?: string; // 'Volume'
-    }
-  
-
   return (
     <StyledWrapper>
       {song && (
