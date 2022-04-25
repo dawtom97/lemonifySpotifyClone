@@ -1,16 +1,26 @@
-import Link from "next/link";
 import React from "react";
 import { HiBookmark, HiOutlineClock, HiShieldCheck } from "react-icons/hi";
+import { useRecoilState } from "recoil";
+import { useSpotify } from "../../hooks/useSpotify";
+import { currentSong } from "../../recoilAtoms/playlistAtom";
 import { formatNumber } from "../../utils/formatNumber";
 import { formatTime } from "../../utils/formatTime";
 import { TextComponent } from "../TextComponent/TextComponent";
-import { StyledImg, StyledWrapper } from "./ContentCard.styles";
+import { StyledImg, StyledWrapper } from "./SongCard.styles";
 
-export const ContentCardComponent = ({ item }: any) => {
+export const SongCardComponent = ({ item }: any) => {
+  const spotifyApi = useSpotify();
+
+  const [song, setCurrentSong] = useRecoilState(currentSong);
+
+  const playSong = () => {
+     setCurrentSong(item.track ? item.track.uri : item.uri)
+  //   setCurrentTrackId(item.track ? item.track.id : item.id);
+   //  setIsPlaying(true);
+  }
 
   return (
-    <Link href="/">
-      <StyledWrapper>
+      <StyledWrapper onClick={playSong}>
         <StyledImg>
           {item.images ? (
             <img
@@ -81,6 +91,5 @@ export const ContentCardComponent = ({ item }: any) => {
           )}
         </div>
       </StyledWrapper>
-    </Link>
   );
 };

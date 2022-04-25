@@ -82,7 +82,7 @@ const Home: NextPage = () => {
       .then((data: any) => setRecomendations(data.body.tracks))
       .catch((err) => console.log(err));
     }
-  },[genres])
+  },[genresId])
 
 
   return (
@@ -91,6 +91,7 @@ const Home: NextPage = () => {
       <CategoryListComponent categories={categories} />
       <ContentSwiperComponent
         content={recomendations}
+        isSong={true}
         title="Matched to you"
       />
       <ContentSwiperComponent
@@ -100,9 +101,10 @@ const Home: NextPage = () => {
       <PlaylistSwiperComponent playlist={featured} title="Featured playlists" />
       <ContentSwiperComponent
         content={recentlyPlayedTracks}
+        isSong={true}
         title="Recently played"
       />
-      <ContentSwiperComponent content={myTopTracks} title="Favourite tracks" />
+      <ContentSwiperComponent content={myTopTracks} title="Favourite tracks" isSong={true} />
 
     </MainLayout>
   );

@@ -6,8 +6,9 @@ import { TitleComponent } from "../TitleComponent/TitleComponent";
 import { SwiperButtonsComponent } from "../SwiperButtonsComponent/SwiperButtonsComponent";
 import { ContentCardComponent } from "../ContentCardComponent/ContentCardComponents";
 import Link from "next/link";
+import { SongCardComponent } from "../SongCardComponent/SongCardComponent";
 
-export const ContentSwiperComponent = ({ content, title }:any) => {
+export const ContentSwiperComponent = ({ content, title, isSong }:any) => {
   return (
     <StyledWrapper>
       <Swiper
@@ -43,7 +44,7 @@ export const ContentSwiperComponent = ({ content, title }:any) => {
       
         {content.map((item: any) => (
         <SwiperSlide key={item.id}>
-          <ContentCardComponent item={item}/>
+          {isSong ? <SongCardComponent item={item}/> : <ContentCardComponent item={item}/>}
         </SwiperSlide>
       ))}
       </Swiper>

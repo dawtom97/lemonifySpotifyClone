@@ -3,6 +3,7 @@ import { UserModalTypes } from "./UserModal.types";
 
 export const StyledModal = styled.div<UserModalTypes>`
  position: absolute;
+ display: none !important;
  top:50%;
  right:0%;
  transform: translateX(100%) translateY(-50%);

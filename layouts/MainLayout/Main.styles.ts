@@ -7,7 +7,7 @@ export const StyledWrapper = styled.div`
   background-color: ${props => props.theme.body};
 `
 export const StyledInnerWrapper = styled.div`
- 
+   
 `
 export const StyledAppShadowOverlay = styled.div<StyledAsideTypes>`
   position: fixed;
