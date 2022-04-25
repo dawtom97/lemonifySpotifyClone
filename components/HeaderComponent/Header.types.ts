@@ -1,7 +1,7 @@
 import { MouseEventHandler } from "react";
 
 export type SessionProps = {
-    session: UserSessionProps;
+    session: any;
     onClick:MouseEventHandler<HTMLDivElement>
   };
   type UserSessionProps = {

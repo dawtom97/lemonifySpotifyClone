@@ -1,10 +1,21 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "../themes/themes";
 import { createContext, useState } from "react";
 import { ThemeEnums } from "../enums/ThemeEnums";
 import { SessionProvider } from "next-auth/react";
+import { RecoilRoot } from "recoil";
+import { PlayerComponent } from "../components/PlayerComponent/PlayerComponent";
+
+const ThemeButton = styled.button`
+  
+  position: absolute;
+  right:0;
+  top:0px;
+  border: none;
+  background-color: transparent;
+`
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const [theme, setTheme] = useState(ThemeEnums.light);
@@ -23,9 +34,14 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       >
         <GlobalStyles />
 
-        <Component toggler={themeToggler} {...pageProps} />
+        <RecoilRoot>
+          <Component toggler={themeToggler} {...pageProps} />
+          <PlayerComponent/>
+        </RecoilRoot>
 
-        <button onClick={themeToggler}>Zmień</button>
+        <ThemeButton onClick={themeToggler}>Zmień</ThemeButton>
+    
+      
       </ThemeProvider>
     </SessionProvider>
   );

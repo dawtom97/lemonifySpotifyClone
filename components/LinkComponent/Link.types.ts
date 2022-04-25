@@ -1,7 +1,8 @@
-import React from "react"
+import React, { Dispatch, SetStateAction } from "react"
 
 export type LinkTypes = {
     href: string,
     title: string,
-    children: React.ReactElement
+    children: React.ReactElement,
+    onClick?:any,
 }

@@ -6,7 +6,7 @@ import { LinkTypes } from "./Link.types";
 
 
 
-export const LinkComponent = ({href,title,children}: LinkTypes) => {
+export const LinkComponent = ({href,title,children,onClick}: LinkTypes) => {
 
    return (
     <Link href={href}>

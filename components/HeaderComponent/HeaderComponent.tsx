@@ -1,5 +1,3 @@
-
-import Image from "next/image";
 import { HiGlobeAlt, HiMenu, HiMusicNote } from "react-icons/hi";
 import { checkDayTime } from "../../utils/checkDayTime";
 import { TextComponent } from "../TextComponent/TextComponent";
